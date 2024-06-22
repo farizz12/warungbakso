@@ -1,14 +1,11 @@
 <?php
+$host = "db";
+$user = "warungbakso";
+$password = "warungbakso";
+$dbname = "WarungBakso";
 
-$db_name = 'mysql:host=db;dbname=warungbakso'; // Ganti dengan alamat IP container MySQL
-$user_name = 'warungbakso';
-$user_password = 'warungbakso';
+$koneksi = new mysqli($servername, $username, $password, $dbname);
 
-try {
-    $conn = new PDO($db_name, $user_name, $user_password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+if ($koneksi->connect_error) {
+    die("Koneksi gagal: " . $koneksi->connect_error);
 }
-
-?>
